@@ -10,8 +10,40 @@
 <script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
 <script type="text/javascript" src="js/script.js"></script>
 <script type="text/javascript" src="js/coin-slider.min.js"></script>
+<!--<script type="text/javascript" src="js/shopping-cart.js"></script>-->
+<script type="text/javascript">
+
+function increment_value()
+{
+    //var $this = $(this);
+    var $input = document.getElementById("plus_text").value;
+    var $value_a = parseInt($input);
+    if ($value_a < 1000) {
+        $value_a = $value_a + 1;
+        $("#label_price").text("Rs:"+($value_a*25));
+    } else {
+        $value_a = 0;
+    }
+  document.getElementById("plus_text").value=$value_a;
+}
+
+function decrement_value()
+{
+    //var $this = $(this);
+    var $input = document.getElementById("plus_text").value;
+    var $value_a = parseInt($input);
+    if ($value_a >= 1) {
+        $value_a = $value_a - 1;
+        $("#label_price").text("Rs:"+($value_a*25));
+    } else {
+        $value_a = 0;
+    }
+    document.getElementById("plus_text").value=$value_a;
+}
+
+</script>
 </head>
-<body>
+<body class="shopping-body">
 <div class="main">
   <div class="header">
     <div class="header_resize">
@@ -36,19 +68,55 @@
   <div class="content">
     <div class="content_resize">
       <div class="mainbar">
-        <div class="article">
-          <h2><span>Pure Home Grown Eggs.</span> Let's Say NO To Poultry Eggs</h2>
-          <p class="infopost"><a href="#" class="com"><span>1</span></a> We are famouse from<span class="date">2012</span> in <a href="#">Bellary</a> &nbsp;&nbsp;&bull;&nbsp;&nbsp; Karnataka <a href="#">583102</a>, <a href="#">India</a></p>
-          <div class="clr"></div>
-          <div class="img"><img src="images/img1.jpg" width="177" height="213" alt="" class="fl" /></div>
-          <div class="post_content">
-            <p>Eggs are generally considered healthy and can be a wholemeal in itself. </p>
-            <p><strong>There is always a big confusion between white eggs and brown eggs. Generally, the brown variant of any food item is naturally considered to be healthier than their white counterparts, be it the brown rice or the brown bread. It is proven that brown variant is much high on nutrition and replacing it with the white variant can work wonders.<br/>It is one of the best comfort food that we can have during any time of the day. It gives us energy and makes us feel satiated. Eggs are the powerhouse of proteins, and are needed for building muscles and repairing the damaged tissues. It is a versatile food item, which can be clubbed with any other food to make a new dish. The yolk of egg is rich in vitamin D and is essential for boosting immunity and providing energy for the entire day.</p>
-            <p class="spec"><a href="#" class="rm"> </a></p>
+        <div class="shopping-cart">
+          <!-- Title -->
+          <div class="title">
+            Shopping Bag
           </div>
-          <div class="clr"></div>
-        </div>
-        
+          <!-- Product #1 -->
+          <div class="item">
+            <div class="buttons">
+              <span class="delete-btn"></span>
+            </div>
+         
+            <div class="image">
+              <img src="images/gal1.jpg" alt="" />
+            </div>
+         
+            <div class="description">
+              <span>Brown Eggs</span>
+              <span></span>
+              <span>Normal Size</span>
+            </div>
+            <div class="quantity">
+              <button class="plus-btn" type="button"  name="button"  onclick="increment_value()">
+                <img src="images/plus.svg" alt="" />
+              </button>
+              <input type="text" name="name" id="plus_text" value="1">
+              <button class="minus-btn" type="button" name="button" onclick="decrement_value()">
+                <img src="images/minus.svg" alt="" />
+              </button>
+            </div>
+             <div class="total-price"><label id="label_price">0</label></div>
+          </div>
+            <form name="address_form" action="insert_rows.php" method="post">
+              <div class="table-users">
+                <div class="table_header">BILLING Details</div>
+                <table cellspacing="0">
+                  <tr><td>Name:</td><td>*<input type="text" name="c_name" id="c_name" required /></td></tr>
+                  <tr><td>Address1:</td><td>*<input type="text" name="Address1" id="Address1" required /></td></tr>
+                  <tr><td>Address2:</td><td>*<input type="text" name="Address2" id="Address2" required/></td></tr>
+                  <tr><td>Locality:</td><td>*<input type="text" name="Locality" id="Locality" required/></td></tr>
+                  <tr><td>State:</td><td>*<input type="text" name="state" id="state" required/></td></tr>
+                  <tr><td>Pincode:</td><td>*<input type="text" name="Pincode" id="Pincode" required/></td></tr>
+                  <tr><td>City:</td><td>*<input type="text" name="City" id="City" required/></td></tr>
+                  <tr><td>Mobile: <b>+91</b></td><td>*<input type="text" name="Mobile" id="Mobile" required/></td></tr>
+                  <tr><td><input type="submit" name="submit" id="submit" Value="Deliver to this address"/></td>
+                  <td><input type="reset" name="reset" id="reset"/></td></tr>
+                </table>
+             </div>
+            </form>
+        </div>    
       </div>
       <div class="sidebar">
         <div class="searchform">
