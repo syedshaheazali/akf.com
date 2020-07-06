@@ -39,15 +39,14 @@ window.onload = function () {
 	//var subtotal=data.qty;
 	var sub_total = int_qty*25;
 	var shipping_charge=0;
-	alert (data.City);
-	if (data.City != "Bellary" || data.City != "bellary" || data.City != "ballari" || data.City != "Ballari")
+	if (data.City == "Bellary" || data.City == "bellary" || data.City == "ballari" || data.City == "Ballari")
 	{
 	//adding shipping charge rs 50	
-	 shipping_charge=50;
+	 shipping_charge=0;
 	}
 	else
 	{
-	shipping_charge=0;
+	shipping_charge=50;
 	}
 	var total = sub_total + shipping_charge;
 	document.getElementById("amount").value=sub_total;
