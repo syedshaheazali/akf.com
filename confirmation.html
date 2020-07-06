@@ -18,6 +18,12 @@ input:focus, textarea:focus, select:focus{
 
 <script>
 
+function messgae_order()
+{
+  alert (" Thank you for ordering. Our associate will call you for confirmation");
+  self.location="index.html";
+}
+
 window.onload = function () {
     
 	//alert (document.location.href);
@@ -78,7 +84,7 @@ window.onload = function () {
 	<center>
 		<div>
 			<div><h3>ORDER CONFIRMATION</h3></div>
-			<form action="https://script.google.com/macros/s/AKfycbxnJtM60kEo6bYhMWYAtBARfn7DV8oojnlVoUqFUDadvwIo7CXh/exec" method="post">
+			<form action="https://script.google.com/macros/s/AKfycbxnJtM60kEo6bYhMWYAtBARfn7DV8oojnlVoUqFUDadvwIo7CXh/exec" method="post" onsubmit="return messgae_order();">
    <table cellspacing="0" bgcolor="white" style="border-radius: 10px;border: 2px solid #73AD21; width:30%;">
       <tr>
          <td><h3>PRODUCT</h3></td>
