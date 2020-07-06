@@ -32,14 +32,15 @@ window.onload = function () {
 	document.getElementById("c_name").value=data.name;
 	var proper_address=data.address1.replace(/%20/g, " ");
 	
-	proper_address =proper_address +'\r\n'+ data.City;
-	proper_address= proper_address +'\r\n'+ data.Mobile;
+	proper_address =proper_address +" "+ data.City;
+	proper_address= proper_address +" "+ data.Mobile;
 	document.getElementById("address1").value=proper_address;
 	var int_qty=parseInt(data.qty);
 	//var subtotal=data.qty;
 	var sub_total = int_qty*25;
 	var shipping_charge=0;
-	if (data.city != "Bellary" || data.city != "bellary" || data.city != "ballari" || data.city != "Ballari")
+	alert (data.City);
+	if (data.City != "Bellary" || data.City != "bellary" || data.City != "ballari" || data.City != "Ballari")
 	{
 	//adding shipping charge rs 50	
 	 shipping_charge=50;
