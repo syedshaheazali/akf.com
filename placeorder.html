@@ -4,15 +4,12 @@
 <title>AndeKaFanda</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link href="css/style.css" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" type="text/css" href="css/coin-slider.css" />
 <script type="text/javascript" src="js/cufon-yui.js"></script>
 <script type="text/javascript" src="js/cufon-titillium-900.js"></script>
 <script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
 <script type="text/javascript" src="js/script.js"></script>
 <script type="text/javascript" src="js/coin-slider.min.js"></script>
-<!--<script type="text/javascript" src="js/shopping-cart.js"></script>-->
 <script type="text/javascript">
-
 function increment_value()
 {
     //var $this = $(this);
@@ -41,6 +38,31 @@ function decrement_value()
     document.getElementById("plus_text").value=$value_a;
 }
 
+function navigate()
+{
+var qty= document.getElementById("plus_text").value;
+var name= document.getElementById("c_name").value;
+var address1 = document.getElementById("Address1").value;
+var Locality = document.getElementById("Locality").value;
+var City = document.getElementById("City").value;
+var State = document.getElementById("State").value;
+var Pincode = document.getElementById("Pincode").value;
+var Mobile = document.getElementById("Mobile").value;
+
+if  ( qty==0 ||name == "" || address1 == "" || Locality == "" || City == "" || State == "" || Pincode == "" || Mobile == "" )
+ {
+ alert ("All The Fieds Are Needed");
+ }
+ else
+ {
+ self.location="confirmation.html?qty="+encodeURIComponent(qty)+"&name="+encodeURIComponent(name)+"&address1="+encodeURIComponent(address1)+"&City="+encodeURIComponent(City)+"&Mobile="+encodeURIComponent(Mobile);
+ //name=' + encodeURIComponent(b)
+ //"&address1="+address1+"&Locality="+Locality+"&City="+City+"&State="+State+"&Pincode="+Pincode+"&Mobile="+&Mobile;
+ }
+ 
+ 
+
+}
 </script>
 </head>
 <body class="shopping-body">
@@ -59,7 +81,9 @@ function decrement_value()
       </div>
       <div class="clr"></div>
       <div class="slider">
-        <div id="coin-slider"> <a href="#"><img src="images/slide1.jpg" width="934" height="307" alt="" /> </a> <a href="#"><img src="images/slide2.jpg" width="934" height="307" alt="" /> </a> <a href="#"><img src="images/slide3.jpg" width="934" height="307" alt="" /> </a> </div>
+        <div id="coin-slider"> 
+		<img src="images/VitaminD.jpeg" width="934" height="307" alt="" />
+		</div>
         <div class="clr"></div>
       </div>
       <div class="clr"></div>
@@ -69,50 +93,80 @@ function decrement_value()
     <div class="content_resize">
       <div class="mainbar">
         <div class="shopping-cart">
-          <!-- Title -->
-          <div class="title">
-            Shopping Bag
-          </div>
-          <!-- Product #1 -->
+       <!--    Title -->
+        <form name="shopping-form" id="shopping-form" method="post">        
+          <!-- Product #1--> 
           <div class="item">
-            <div class="buttons">
-              <span class="delete-btn"></span>
-            </div>
-         
-            <div class="image">
-              <img src="images/gal1.jpg" alt="" />
-            </div>
-         
+		   <span><img src="images/gal1.jpg"/></span>
+		   <span> </span>
             <div class="description">
+			 
               <span>Brown Eggs</span>
               <span></span>
               <span>Normal Size</span>
             </div>
             <div class="quantity">
-              <button class="plus-btn" type="button"  name="button"  onclick="increment_value()">
+              <button class="plus-btn" type="button"  name="button"  onclick="return increment_value();">
                 <img src="images/plus.svg" alt="" />
               </button>
-              <input type="text" name="name" id="plus_text" value="1">
-              <button class="minus-btn" type="button" name="button" onclick="decrement_value()">
+			  
+              <input type="text" name="plus_text" id="plus_text" value="0"/>
+              <button class="minus-btn" type="button"  name="button"  onclick="return decrement_value();">
                 <img src="images/minus.svg" alt="" />
               </button>
             </div>
              <div class="total-price"><label id="label_price">0</label></div>
-          </div>
-            <form name="address_form" action="insert_rows.php" method="post">
-              <div class="table-users">
-                <div class="table_header">BILLING Details</div>
+          </div>      
+            <div class="table-users">
+                
+			<!--<div class="item">
+		    <span><img src="images/gal1.jpg"/></span>
+		    <span> </span>
+            <div class="description">
+			 
+              <span>Brown Eggs</span>
+              <span></span>
+              <span>Normal Size</span>
+            </div>
+			<input type="button" value="+" class="plus-btn"   name="plus-button"  onclick="increment_value();"/>
+			<input type="text" name="plus_text" id="plus_text" value="0">
+			<input type="button" value="-" class="minus-btn"   name="minus-button"  onclick="decrement_value();"/>
+				</div>
+				-->
                 <table cellspacing="0">
                   <tr><td>Name:</td><td>*<input type="text" name="c_name" id="c_name" required /></td></tr>
-                  <tr><td>Address1:</td><td>*<input type="text" name="Address1" id="Address1" required /></td></tr>
-                  <tr><td>Address2:</td><td>*<input type="text" name="Address2" id="Address2" required/></td></tr>
+                  <tr><td>Address:</td><td>*<input type="textarea" name="Address1" id="Address1" required /></td></tr>
                   <tr><td>Locality:</td><td>*<input type="text" name="Locality" id="Locality" required/></td></tr>
-                  <tr><td>State:</td><td>*<input type="text" name="state" id="state" required/></td></tr>
+                  <tr><td>State:</td><td>*<input type="text" name="State" id="State" required/></td></tr>
                   <tr><td>Pincode:</td><td>*<input type="text" name="Pincode" id="Pincode" required/></td></tr>
                   <tr><td>City:</td><td>*<input type="text" name="City" id="City" required/></td></tr>
                   <tr><td>Mobile: <b>+91</b></td><td>*<input type="text" name="Mobile" id="Mobile" required/></td></tr>
-                  <tr><td><input type="submit" name="submit" id="submit" Value="Deliver to this address"/></td>
-                  <td><input type="reset" name="reset" id="reset"/></td></tr>
+                  <tr><td><input style=" background-color: #4CAF50; /* Green */
+    border: none;
+    color: black;
+    padding: 15px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 14px;
+    transition-duration: 0.4s;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);" type="button" name="submit" id="submit" onclick="return navigate();" Value="Deliver to this address"/></td>
+                  <td><input style=" background-color: #FF0000; /* Green */
+    border: none;
+    color: black;
+    padding: 15px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 14px;
+    transition-duration: 0.4s;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);" type="reset" name="reset" id="reset"/></td></tr>
                 </table>
              </div>
             </form>
@@ -131,22 +185,22 @@ function decrement_value()
           <h2 class="star"><span>Why Natural Eggs</span></h2>
           <div class="clr"></div>
           <ul class="sb_menu">
-            <li><a href="#">High in Vitamin D</a></li>
-            <li><a href="#">High in Omega-3 Fatty acid</a></li>
-            <li><a href="#">Vitamin A: 6% of the RDA</a></li>
-            <li><a href="#">Folate: 5% of the RDA</a></li>
-            <li><a href="#">Vitamin B5: 7% of the RDA</a></li>
-            <li><a href="#">Vitamin B12: 9% of the RDA</a></li>
-            <li><a href="#">Vitamin B2: 15% of the RDA</a></li>
-            <li><a href="#">Phosphorus: 9% of the RDA</a></li>
-            <li><a href="#">Vitamin E,K,B6,Calcium and Zinc</a></li>
+            <li>High in Vitamin D</li>
+            <li>High in Omega-3 Fatty acid</li>
+            <li>Vitamin A: 6% of the RDA</li>
+            <li>Folate: 5% of the RDA</li>
+            <li>Vitamin B5: 7% of the RDA</li>
+            <li>Vitamin B12: 9% of the RDA</li>
+            <li>Vitamin B2: 15% of the RDA</li>
+            <li>Phosphorus: 9% of the RDA</li>
+            <li>Vitamin E,K,B6,Calcium and Zinc</li>
           </ul>
         </div>
         <div class="gadget">
           <h2 class="star"><span>OWNERS</span></h2>
           <div class="clr"></div>
           <ul class="ex_menu">
-            <li><a href="#">Syed Shakir Ali & Sons</a></li>
+            <li>Syed Shakir Ali & Sons</li>
           </ul>
         </div>
       </div>

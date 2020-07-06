@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>AndeKaFanda</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<link href="css/tables.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/cufon-yui.js"></script>
+<script type="text/javascript" src="js/cufon-titillium-900.js"></script>
+<script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="js/script.js"></script>
+<script type="text/javascript" src="js/coin-slider.min.js"></script>
+<style>
+input:focus, textarea:focus, select:focus{
+        outline: none;
+    }
+</style>
+
+<script>
+
+window.onload = function () {
+    
+	//alert (document.location.href);
+    var url = document.location.href,
+        params = url.split('?')[1].split('&'),
+        data = {}, tmp;
+    for (var i = 0, l = params.length; i < l; i++) {
+         tmp = params[i].split('=');
+         data[tmp[0]] = tmp[1];
+    }
+	document.getElementById("qty").value=data.qty;
+	document.getElementById("c_name").value=data.name;
+	var proper_address=data.address1.replace(/%20/g, " ");
+	
+	proper_address =proper_address +'\r\n'+ data.City;
+	proper_address= proper_address +'\r\n'+ data.Mobile;
+	document.getElementById("address1").value=proper_address;
+	var int_qty=parseInt(data.qty);
+	//var subtotal=data.qty;
+	var sub_total = int_qty*25;
+	var shipping_charge=0;
+	if (data.city != "Bellary" || data.city != "bellary" || data.city != "ballari" || data.city != "Ballari")
+	{
+	//adding shipping charge rs 50	
+	 shipping_charge=50;
+	}
+	else
+	{
+	shipping_charge=0;
+	}
+	var total = sub_total + shipping_charge;
+	alert ("total" + total);
+	document.getElementById("amount").value=sub_total;
+	document.getElementById("sub_total").value=sub_total;
+	document.getElementById("shipping").value=shipping_charge;
+	document.getElementById("total").value=total;
+	
+
+}
+</script>
+
+</head>
+<body>
+
+  <div class="header">
+    <div class="header_resize">
+      <div class="menu_nav">
+        <ul>
+          <li class="active"><a href="index.html"><span>Home Page</span></a></li>
+          <li><a href="placeorder.html"><span>PlaceOrder</span></a></li>
+          <li><a href="contact.html"><span>Contact Us</span></a></li>
+        </ul>
+      </div>
+      <div class="logo">
+        <h1><a href="index.html">AndeKa<span>Fanda</span><small>Don't Eat Less , Eat Right</small></a></h1>
+      </div>
+      <div class="clr"></div>
+    </div>
+	<center>
+		<div>
+			<div><h3>ORDER CONFIRMATION</h3></div>
+			<form action="https://script.google.com/macros/s/AKfycbxnJtM60kEo6bYhMWYAtBARfn7DV8oojnlVoUqFUDadvwIo7CXh/exec" method="post">
+   <table cellspacing="0" bgcolor="white" style="border-radius: 10px;border: 2px solid #73AD21; width:30%;">
+      <tr>
+         <td><h3>PRODUCT</h3></td>
+         <td><h3>DESCRIPTION</h3></td>
+         <td><h3>QTY</h3></td>
+         <td><h3>AMOUNT</h3></td>
+      </tr>
+      <tr>
+         <td>Eggs</td>
+         <td>&nbsp;Brown Eggs</td>
+		 <td><input type="text" name="qty" id="qty" readonly></input></td>
+         <td><input type="text" name="amount" id="amount" readonly></input></td>
+      </tr>
+      <tr >
+         <td colspan="2"><h2>Billing Address:</h2> </b>
+         <input type="text" name="c_name" id="c_name" readonly></input></br>
+		 <input  type="textarea" name="address1" id="address1" readonly></input></br> 
+		 </br>
+         </td>
+<td colspan="2">
+   <table  cellspacing=0" style="border-radius:2px;border: 2px solid #73AD21;align=right">
+      <tr><td><b>SubTotal:</b></td><td><input type="text" name="sub_total" id="sub_total" readonly></input></td></tr>
+	  <tr><td><b>Shipping:</b></td><td><input name="shipping" id="shipping" readonly></input></td></tr>
+   </table>  
+</td>
+      </tr>
+<tr>
+   <td></td>
+   <td></td>
+   <td> <h2>TOTAL:</h2></td>
+   <td><h2><input type="text" name="total" id="total" readonly ></label></h2></td>
+</tr>
+<tr><td><input  style="background-color: #00aaFF; /* Green */
+    border: none;
+    color: black;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 10px;
+    transition-duration: 0.4s;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);" type="submit" name="confirmed" value="Confirm Order"/></td></tr>
+   </table>
+   
+</div>
+</form>
+  </div>
+  </center>
+  <div class="footer">
+    <div class="footer_resize">
+      <p class="lf">&copy; Copyright <a href="#">AndeKaFanda</a>.</p>
+      <p class="rf">Design by Shaheaz <a href="#">My Website</a></p>
+      <div style="clear:both;"></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
