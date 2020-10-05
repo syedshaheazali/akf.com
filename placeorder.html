@@ -17,7 +17,7 @@ function increment_value()
     var $value_a = parseInt($input);
     if ($value_a < 1000) {
         $value_a = $value_a + 1;
-        $("#label_price").text("Rs:"+($value_a*25));
+        $("#label_price").text("Rs:"+($value_a*15));
     } else {
         $value_a = 0;
     }
@@ -31,7 +31,7 @@ function decrement_value()
     var $value_a = parseInt($input);
     if ($value_a >= 1) {
         $value_a = $value_a - 1;
-        $("#label_price").text("Rs:"+($value_a*25));
+        $("#label_price").text("Rs:"+($value_a*15));
     } else {
         $value_a = 0;
     }
