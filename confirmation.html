@@ -17,34 +17,31 @@ input:focus, textarea:focus, select:focus{
 </style>
 
 <script type="text/javascript">
-
-  $('#google_form_submit').submit(function(e){
+ $(document).ready(function() {
+  $("#google_form_submit").submit(function(e){
       e.preventDefault();
-      //var formData = $('#google_form_submit').serialize();
+      var formData = $('#google_form_submit').serialize();
       $.ajax({
             type        : 'POST', 
             url         : 'https://script.google.com/macros/s/AKfycbxnJtM60kEo6bYhMWYAtBARfn7DV8oojnlVoUqFUDadvwIo7CXh/exec',
-            //data        : formData, 
-            //dataType    : 'json',
-            encode      : true
-       }).done(function(data) {
-            if(data.result == 'success') {
-              // Form submission was successful and accepted by google. 
-              // You can show your success message here
+            data        : formData, 
+            dataType    : 'json',
+            encode      : true,
+			success: function(response) { 
+			
+			 if(response.result == 'success') {
+			  alert("Confirmed and Our associate will call you for confirmation");
 			  self.location="index.html";
 
             } else {
-               // Form was submission failed for some reasons.
-               // You can examine the response from google to see whats missing
-
+              alert("Your order got failed");
             }
-       }).fail(function (jqXHR,status,err) {
-            // Form submission failed due to some network or other errors
-            // I am alerting the error but you can do anything else with it     
-            alert(err);
-       });
+           }
+       })
+    });
   });
-
+  
+  
 function messgae_order()
 {
   alert (" Thank you for ordering. Our associate will call you for confirmation");
