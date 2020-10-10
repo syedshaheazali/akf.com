@@ -67,7 +67,7 @@ window.onload = function () {
 	document.getElementById("address1").value=proper_address;
 	var int_qty=parseInt(data.qty);
 	//var subtotal=data.qty;
-	var sub_total = int_qty*25;
+	var sub_total = int_qty*15;
 	var shipping_charge=0;
 	if (data.City == "Bellary" || data.City == "bellary" || data.City == "ballari" || data.City == "Ballari")
 	{
@@ -76,7 +76,7 @@ window.onload = function () {
 	}
 	else
 	{
-	shipping_charge=50;
+	shipping_charge=30;
 	}
 	var total = sub_total + shipping_charge;
 	document.getElementById("amount").value=sub_total;
